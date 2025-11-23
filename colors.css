@@ -1,1 +1,21 @@
-~/.config/.cache/hellwal/waybar-colors.css
+@define-color background #00000b;
+@define-color foreground #5bcfff;
+@define-color cursor #5bcfff;
+@define-color border #5bcfff;
+
+@define-color color0 #00000b;
+@define-color color1 #0025d8;
+@define-color color2 #005ec1;
+@define-color color3 #0055e0;
+@define-color color4 #0078ca;
+@define-color color5 #10c4f1;
+@define-color color6 #6cccff;
+@define-color color7 #9cffff;
+@define-color color8 #00004a;
+@define-color color9 #001174;
+@define-color color10 #003264;
+@define-color color11 #193c79;
+@define-color color12 #004a7c;
+@define-color color13 #2c839a;
+@define-color color14 #1a8ac5;
+@define-color color15 #5bcfff;
