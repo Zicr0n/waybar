@@ -1,0 +1,100 @@
+{
+    "include":  [
+        "~/.config/waybar/dividers.jsonc"
+    ],
+    "layer": "top",
+    "height": 0,
+    "spacing": 0,
+
+    "margin-right":20,
+    "margin-left":20,
+    "margin-top": 20,
+
+    "modules-left": ["hyprland/workspaces", "custom/right_div#4"],
+    "modules-center": ["custom/left_div#4","custom/left_div#3","memory","custom/left_inv#1","custom/left_div#5","custom/appLauncher", "custom/right_div#2", "custom/right_inv#1", "cpu", "custom/right_div#3", "custom/right_div#4"],
+    "modules-right": ["custom/left_div#4","network", "bluetooth","pulseaudio", "tray", "clock", "custom/power"],
+    
+    "reload_style_on_change" : true,
+    
+    "custom/appLauncher":{
+        "format": "󰣇",
+        "tooltip": true,
+        "tooltip-format": "Open App Launcher",
+        "on-click": "wofi"
+    },
+
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}",
+        "format": "{:%a %H:%M}",
+		"on-click": "gnome-calendar",
+        "tooltip": false
+    },
+
+    "network":{
+        "format-ethernet": " ",
+        "format-disconnected":"No Network",
+        "interval": 5,
+        "tooltip":false,
+        "on-click": "kitty -e 'nmtui'"
+    },
+
+    "tray":{
+        "spacing":5,
+        "tooltip":false
+    },
+
+    "bluetooth": {
+        // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+        "format": " ",
+        // "format-disabled": "", // an empty format will hide the module
+        // "format-connected": " {num_connections} connected",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "blueberry"
+    },
+
+    "pulseaudio":{
+        "scrollstep":5,
+        "max-volume":150,
+        "format":"{volume}%{icon}",
+        "format-bluetooth":"{icon} {volume}%",
+        "format-icons":["", "", ""],
+        "format-muted":"MUTED ",
+        "on-click":"pavucontrol",
+        "tooltip":false
+    },
+
+    "custom/power":{
+        "format":"",
+        "on-click":"exec ~/scripts/wlogout-single.sh",
+        "tooltip":true,
+        "tooltip-format": "Power Menu"
+    },
+
+    "hyprland/workspaces": {
+            "format": "{icon}",
+            "format-icons": {
+                "active": "",
+                "default": "",
+                "empty": ""
+            },
+            "persistent-workspaces": {
+                "*": [ 1,2,3,4,5 ]
+            }
+    },
+
+    "cpu": {
+        "interval": 10,
+        "format": "{usage}%  ",
+        "max-length": 10,
+        "tooltip":false
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": " 󰘚 {}%",
+        "max-length": 10
+    }
+}

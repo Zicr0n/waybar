@@ -1,0 +1,20 @@
+@import "styles/modules-left.css";
+@import "styles/modules-center.css";
+@import "styles/modules-right.css";
+@import "colors.css";
+
+*{
+	font-family: "Maple Mono";
+    font-size: 16px;
+}
+
+window#waybar{
+    background: alpha(@background, 0.3);
+    border-style: none;
+    border-radius: 5;
+}
+
+tooltip{
+    background: alpha(@background,0.7);
+    color: @color7;
+}

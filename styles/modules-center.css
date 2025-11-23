@@ -1,0 +1,64 @@
+@define-color distro @color5;
+@define-color distro_hover @color7;
+@define-color memory @color4;
+
+.modules-center{
+    background: transparent;
+    margin: 5px 0px 5px 0;
+    padding: 0px 0px;
+}
+
+/* Dividers for inside */
+#custom-right_inv.1,
+#custom-left_inv.1{
+    font-size: 28px;
+    color: @memory;
+    background-color: alpha(@background, 0.5);
+    margin: 0px 0px;
+}
+
+/* Dividers for outside */
+#custom-right_div.3,
+#custom-left_div.3{
+    color: @memory;
+    font-size: 26px;
+    background-color: alpha(@background, 0.5)
+
+}
+
+/* Memory */
+#memory{
+    border-style: none;
+	background-color: @memory;
+	color: @color7;
+    padding: 0px 5px;
+}
+
+/* CPU */
+#cpu{
+    border-style: none;
+	background-color: @memory;
+	color: @color7;
+    padding: 0px 10px;
+}
+
+/* App launcher + dividers*/
+#custom-left_div.5,
+#custom-right_div.2 {
+	color: @distro;
+    font-size: 25px;
+    background-color: alpha(@background, 0.5)
+
+}
+#custom-appLauncher {
+	padding: 0 25px 0 20px;
+	font-size: 25px;
+	background-color: @distro;
+	color: white;
+
+    transition: all 200ms ease-out;
+}
+#custom-appLauncher:hover{
+	font-size: 27px;
+	color: @distro_hover;
+}
