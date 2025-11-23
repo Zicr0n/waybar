@@ -68,7 +68,7 @@
 
     "custom/power":{
         "format":"",
-        "on-click":"exec ~/scripts/wlogout-single.sh",
+        "on-click":"exec ~/.config/waybar/wlogout-single.sh",
         "tooltip":true,
         "tooltip-format": "Power Menu"
     },
