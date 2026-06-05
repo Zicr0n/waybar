@@ -3,18 +3,52 @@
 @import "styles/modules-right.css";
 @import "colors.css";
 
-*{
-	font-family: "Maple Mono";
-    font-size: 16px;
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+    font-weight: 900;
+    border: none;
+    border-radius: 0px;
+    min-height: 0px;
+    margin: 0;
 }
 
 window#waybar{
-    background: alpha(@background, 0.3);
+    background: alpha(@background, 0.7);
     border-style: none;
-    border-radius: 5;
+    border-radius: 5px;
+    border: 2px ridge @background;
+}
+
+#waybar > box {
+  margin: 2px 2px 2px 2px;
+  padding: 2px 5px;
 }
 
 tooltip{
-    background: alpha(@background,0.7);
+    background: alpha(@background,0.9);
     color: @color7;
+}
+
+#custom-separatorR,
+#custom-separatorR2,
+#custom-separatorL {
+    opacity: 0.35;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: 12px;
+    color: @foreground;
+}
+
+#custom-separatorVertical,
+#custom-separatorVertical2 {
+    opacity: 0.35;
+    padding-bottom: 0px;
+    padding-top: 1px;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: 12px;
+    color: @foreground;
 }

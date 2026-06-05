@@ -1,28 +1,85 @@
 {
-    "include":  [
-        "~/.config/waybar/dividers.jsonc"
+    "include": [
+        "~/.config/waybar/dividers.jsonc",
+        "~/.config/waybar/custom.jsonc"
     ],
     "layer": "top",
-    "height": 0,
-    "spacing": 0,
+    "exclusive": true,
+    "height": 14,
+    "spacing": 14,
+    "mod": "dock",
+    "gtk-layer-shell": true,
 
-    "margin-right":20,
-    "margin-left":20,
-    "margin-top": 20,
+    "margin-right": 20,
+    "margin-left": 20,
+    "margin-top": 2,
 
-    "modules-left": ["hyprland/workspaces", "custom/right_div#4"],
-    "modules-center": ["custom/left_div#4","custom/left_div#3","memory","custom/left_inv#1","custom/left_div#5","custom/appLauncher", "custom/right_div#2", "custom/right_inv#1", "cpu", "custom/right_div#3", "custom/right_div#4"],
-    "modules-right": ["custom/left_div#4","network", "bluetooth","pulseaudio", "tray", "clock", "custom/power"],
+    "modules-left": [
+        "custom/appLauncher",
+        "custom/separatorR",
+        "mpris",
+        "cava",
+        "custom/separatorR2",
+        "network",
+        "bluetooth"
+    ],
+
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+
+    "modules-right": [
+        "pulseaudio",
+        "memory",
+        "cpu",
+        "custom/separatorL",
+        "tray",
+        "custom/separatorVertical",
+        "clock",
+        "custom/separatorVertical2",
+        "custom/weather"
+    ],
     
     "reload_style_on_change" : true,
-    
-    "custom/appLauncher":{
-        "format": "󰣇",
-        "tooltip": true,
-        "tooltip-format": "Open App Launcher",
-        "on-click": "wofi"
+
+    "mpris": {
+        "format": " {dynamic}",
+        // "format-paused": "<span color='#1b1b1b'>{status_icon} {dynamic}</span>",
+        "format-paused": "{status_icon} ",
+        "title-len": 20,
+        "interval": 1, 
+        "dynamic-order": ["artist", "position", "length"], 
+        "dynamic-importance-order": ["position", "length", "artist"],
+        "tooltip-format": "{player} ({status}):\n{artist} - {title}",  
+        "status-icons": {
+            "paused": "󰝛"
+        },
+        "ignored-players": ["firefox"]
     },
 
+    "cava": {
+        "framerate": 30,
+        "autosens": 0,
+        "sensitivity": 7,
+        "bars": 14,
+        "lower_cutoff_freq": 50,
+        "higher_cutoff_freq": 10000,
+        "hide_on_silence": false,
+        "format_silent": "quiet",
+        "method": "pipewire",
+        "source": "auto",
+        "stereo": true,
+        "reverse": false,
+        "bar_delimiter": 0,
+        "monstercat": false,
+        "waves": false,
+        "noise_reduction": 0.2,
+        "input_delay": 2,
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+        "actions": {
+            "on-click-right": "mode"
+        }
+    },
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}",
@@ -34,21 +91,21 @@
     "network":{
         "format-ethernet": " ",
         "format-disconnected":"No Network",
-        "interval": 5,
+        "interval": 10,
         "tooltip":false,
         "on-click": "kitty -e 'nmtui'"
     },
 
     "tray":{
-        "spacing":5,
+        "spacing":2,
         "tooltip":false
     },
 
     "bluetooth": {
         // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
-        "format": " ",
+        "format": "",
         // "format-disabled": "", // an empty format will hide the module
-        // "format-connected": " {num_connections} connected",
+        "format-connected": " {num_connections}",
         "tooltip-format": "{controller_alias}\t{controller_address}",
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
 	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
@@ -58,43 +115,46 @@
     "pulseaudio":{
         "scrollstep":5,
         "max-volume":150,
-        "format":"{volume}%{icon}",
-        "format-bluetooth":"{icon} {volume}%",
+        "format":"{volume}% {icon}",
+        "format-bluetooth":"{icon}  {volume}%",
         "format-icons":["", "", ""],
-        "format-muted":"MUTED ",
+        "format-muted":"MUTED",
         "on-click":"pavucontrol",
         "tooltip":false
     },
 
-    "custom/power":{
-        "format":"",
-        "on-click":"exec ~/.config/waybar/wlogout-single.sh",
-        "tooltip":true,
-        "tooltip-format": "Power Menu"
-    },
-
     "hyprland/workspaces": {
-            "format": "{icon}",
-            "format-icons": {
-                "active": "",
-                "default": "",
-                "empty": ""
-            },
-            "persistent-workspaces": {
-                "*": [ 1,2,3,4,5 ]
-            }
+        "disable-scroll": true,
+        "all-outputs": true,
+        "cursor": true,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "9+"
+        },
+        "persistent-workspaces": {
+            "*": [1,2,3,4,5] // 5 workspaces by default on every monitor
+        }
     },
 
     "cpu": {
         "interval": 10,
-        "format": "{usage}%  ",
+        "format": " {usage}%",
         "max-length": 10,
         "tooltip":false
     },
 
     "memory": {
         "interval": 30,
-        "format": " 󰘚 {}%",
+        "format": "󰘚 {}%",
         "max-length": 10
     }
 }

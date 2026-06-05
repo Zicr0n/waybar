@@ -1,35 +1,18 @@
-/* modules */
-.modules-right{
+.modules-right *{
     background: transparent;
     border-radius: 2.5px;
-    margin: 5px 5px 5px 0px;
 }
 
-/* misc */
-
-#custom-left_div.4{
-    font-size:25px;
-    color: alpha(@background, 0.5);
-}
-
-#clock,
-#network,
 #pulseaudio,
-#idle_inhibitor,
-#tray,
-#custom-master,
-#bluetooth
-{
+#memory,
+#cpu{
     all: unset;
-    padding: 0 10px 0px 10px;
-    color: @color7;
-    background-color: alpha(@background, 0.5);
+    padding: 0px;
+    color: @foreground;
 }
-#custom-power{
-    all: unset;
-    padding: 0px 15px 0px 5px;
-    border-top-right-radius: 2.5px;
-    border-bottom-right-radius: 2.5px;
-    color: @color7;
-    background-color: alpha(@background, 0.5);
+
+#tray,
+#clock,
+#custom-weather{
+    color: @foreground;
 }

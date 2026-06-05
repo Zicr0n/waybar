@@ -1,0 +1,20 @@
+{
+    /* 
+        CUSTOM MODULES
+    */
+
+    "custom/appLauncher":{
+        "format": "󰣇",
+        "tooltip": true,
+        "tooltip-format": "Open App Launcher",
+        "on-click": "wofi"
+    },
+    
+    "custom/weather": {
+        "format": "{}° ",
+        "tooltip": true,
+        "interval": 60,
+        "exec": "wttrbar --nerd",
+        "return-type": "json"
+    }
+}
